@@ -10,10 +10,10 @@ Fakultas      : Ilmu Komputer
 Universitas   : UPN "Veteran" Jawa Timur
 
 Nama Anggota :
-2. Randy Dwi Saputra (20082010100)
-3. Adimas Syiraa Setiabudhi (21082010172)
-4. Bagus Dwi Putra Adiyono (21082010195)
-5. M. Ilham Praditya A.N (21082010205)
+1. Randy Dwi Saputra (20082010100)
+2. Adimas Syiraa Setiabudhi (21082010172)
+3. Bagus Dwi Putra Adiyono (21082010195)
+4. M. Ilham Praditya A.N (21082010205)
 
 Langkah-langkah yang dibutuhkan untuk menjalankan app dengan baik :
 
