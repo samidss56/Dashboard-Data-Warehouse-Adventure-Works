@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<Schema name="dwadventure">
+<!--
+  == This software is subject to the terms of the Eclipse Public License v1.0
+  == Agreement, available at the following URL:
+  == http://www.eclipse.org/legal/epl-v10.html.
+  == You must accept the terms of that agreement to use this software.
+  ==
+  == Copyright (C) 2000-2005 Julian Hyde
+  == Copyright (C) 2005-2011 Pentaho and others
+  == All Rights Reserved.
+  -->
+
+<!-- Shared dimensions -->
+
+  
+
+<!-- Sales -->
+<Cube name="Kirim" defaultMeasure="OrderQty">
+  <!-- Use annotations to provide translations of this cube's caption and
+       description into German and French. Use of annotations in this manner is
+       experimental and unsupported; just for testing right now. -->
+  
+  <Table name="fakta_pengiriman"/>
+
+  <Dimension name="Time" foreignKey="time_id">
+    <Hierarchy hasAll="true" allMemberName="All Times" primaryKey="time_id">
+      <Table name="time" />
+      <Level name="Year" column="tahun" type="Numeric" uniqueMembers="true"
+          levelType="TimeYears"/>
+      <Level name="Month" column="bulan" uniqueMembers="false" type="Numeric"
+          levelType="TimeMonths"/>
+      <Level name="Date" column="tanggal" uniqueMembers="false" type="Numeric"
+          levelType="TimeDays"/>
+    </Hierarchy>
+   
+  </Dimension>
+
+    
+  <Dimension name="Shipmethod" foreignKey ="ship_id">
+      <Hierarchy hasAll="true" allMemberName="All Shipmethod" primaryKey ="ship_id">
+      <Table name="shipmethod"/>
+      <Level name="Ship Name" column="name"/>
+      <!-- <Level name="Ship Base" column="ship_base"/>
+      <Level name="Ship Rate" column="ship_rate"/> -->
+      </Hierarchy>
+      
+  </Dimension>
+
+ 
+  <!-- <Dimension name="Time" foreignKey="time_id">
+    <Hierarchy hasAll="true" allMemberName="All Times" primaryKey="time_id">
+      <Table name="time" />
+      <Level name="Year" column="tahun" type="Numeric" uniqueMembers="true"
+          levelType="TimeYears"/>
+      <Level name="Month" column="bulan" uniqueMembers="false" type="Numeric"
+          levelType="TimeMonths"/>
+      <Level name="Date" column="tanggal" uniqueMembers="false" type="Numeric"
+          levelType="TimeDays"/>
+    </Hierarchy>
+   
+  </Dimension> -->
+
+  <Dimension name="Product" foreignKey = "product_id">
+    <Hierarchy hasAll="true" allMemberName="All Product" primaryKey ="product_id">
+      <Table name="product" />
+      <Level name="Product Name" column="product_name"/>
+      <!-- <Level name="Unit Price" column="unit_price" />
+      <Level name="Discount" column="unit_price_discount" />
+      <Level name="Size" column="size" />
+      <Level name="Weight" column="weight" /> -->
+    </Hierarchy>
+  </Dimension>
+
+ <Dimension name="Customer" foreignKey="customer_id">
+    
+    <Hierarchy  hasAll  ="true" allMemberName="All Customers" primaryKey  = "customer_id">
+        <Table name="customer"/>
+        <!-- <Level name="Type" column="customer_type"/> -->
+        <Level name="Number" column="account_number"/>
+        <!-- <Level name="Type" column="customer_type"/> -->
+    </Hierarchy>
+  </Dimension>
+    
+  <Dimension name="Address" foreignKey="address_id">
+    
+    <Hierarchy  hasAll  ="true" allMemberName="All Address" primaryKey  = "address_id">
+        <Table name="address"/>
+        <Level name="City" column="city"/>
+        <Level name="Address Line" column="address_line"/>
+        <!-- <Level name="City" column="city"/> -->
+    </Hierarchy>
+  </Dimension>
+
+  <Measure name="OrderQty" column="order_qty" aggregator="sum"
+      formatString="Standard"/>
+  <Measure name="SubTotal" column="sub_total" aggregator="sum"
+      formatString="Standard"/>
+  
+ 
+  
+</Cube>
+
+
+
+</Schema>
